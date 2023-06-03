@@ -109,6 +109,8 @@ class ZMQTerminalIPythonApp(JupyterApp, JupyterConsoleApp):  # type:ignore[misc]
                         confirm_exit=self.confirm_exit,
         )
         self.shell.own_kernel = not self.existing
+        sys.stdout.write('\033]0;%s\007' % 'Jupyter Console') # get terminal title changed
+
 
     def init_gui_pylab(self):
         # no-op, because we don't want to import matplotlib in the frontend.
